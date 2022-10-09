@@ -1,0 +1,43 @@
+<%- include('../partials/header'); -%><%- include('../partials/menu', {items: items}); %>
+<body>
+<main>
+    <div class="" style="background-color: #343a40;">
+        <div class="container-fluid" style="padding: 2%; ">
+          <form class="" action="/searchReviews" method="get">
+            <div class="row">
+              <div class="col-3">
+  
+              </div>
+              <div class="col-5">
+                <input class="form-control" type="text" name="title" placeholder="Search Reviews">
+              </div>
+              <div class="col-1">
+                <input class="btn btn-light" type="submit" value="Filter"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    <div class="container-lg" style="margin-top: 2%;">
+        <div class="col-8">
+          <h2 style="text-align: center;">Movie Reviews</h2>
+        <table border="1" class="table table-dark" >
+            <tr>
+                <th>Movie</th><th>Review</th><th>Review Date</th>
+            </tr>
+            <tr>
+                <%
+                if (items) {
+                    var buttons = '';
+                    items.forEach(function(item){
+                           buttons += '<tr><td>'+ item.movie_name +'</td><td>'+ item.movie_review +'</td><td>'+ item.review_date +'</td></tr>';
+                       }); %>
+                       <%- buttons %>
+                <% } %>
+            </tr>
+        </table>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer'); -%>
